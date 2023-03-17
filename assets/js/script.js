@@ -1,6 +1,7 @@
 var timerEl = document.querySelector('#timer');
 var questionsEl = document.querySelector('#questions-container');
 var startBtnEl = document.querySelector('#start-quiz')
+var timer;
 
 // list of all questions, choices, and answers
 
@@ -39,3 +40,17 @@ var questions = [
     },
   ];
 
+var timeLeft = 75;
+var indexOfCurrentQuestion = 0;
+
+startBtnEl.addEventListener('click', function (event) {
+    timerEl.textContent = timeLeft;
+
+    event.preventDefault();
+
+    timer = setInterval(function () {
+        timeLeft--;
+        timerEl.textContent = timeLeft;
+        
+    }, 1000);
+});
