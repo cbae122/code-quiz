@@ -1,3 +1,7 @@
+var timerEl = document.querySelector('#timer');
+var questionsEl = document.querySelector('#questions-container');
+var startBtnEl = document.querySelector('#start-quiz')
+
 // list of all questions, choices, and answers
 
 var questions = [
@@ -34,3 +38,4 @@ var questions = [
       answer: 'console.log',
     },
   ];
+
