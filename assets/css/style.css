@@ -4,3 +4,23 @@
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin: 3%
+}
+
+header h3 {
+    display: inline;
+}
+
+.timer {
+    text-align: right;
+    display: inline;
+}
