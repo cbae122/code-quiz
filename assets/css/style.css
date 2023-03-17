@@ -24,3 +24,18 @@ header h3 {
     text-align: right;
     display: inline;
 }
+
+#questions-container {
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    margin: 20px;
+}
+
+button {
+    margin: 20px;
+}
