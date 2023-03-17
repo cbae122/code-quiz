@@ -51,6 +51,11 @@ startBtnEl.addEventListener('click', function (event) {
     timer = setInterval(function () {
         timeLeft--;
         timerEl.textContent = timeLeft;
-        
+
+        if (timeLeft === 0) {
+            // TODO build the rest of game over logic
+            clearInterval(timer);
+        }
+
     }, 1000);
 });
