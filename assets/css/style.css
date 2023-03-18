@@ -38,4 +38,18 @@ h1 {
 
 button {
     margin: 20px;
+    flex-direction: column;
+    padding: 20px;
+    align-items: left;
+    text-align: left;
+    color: #ffff;
+    background: purple;
 } 
+
+#answer-container {
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+    color: grey;
+}

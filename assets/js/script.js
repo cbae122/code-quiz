@@ -1,6 +1,7 @@
 var timerEl = document.querySelector('#timer');
 var questionsEl = document.querySelector('#questions-container');
-var startBtnEl = document.querySelector('#start-quiz')
+var answerEl = document.querySelector('#answer-container');
+var startBtnEl = document.querySelector('#start-quiz');
 var timer;
 var score = 0;
 
@@ -64,6 +65,15 @@ function endGame () {
     questionsEl.textContent = 'Your score is: ' + timeLeft;
 }
 
+// function setScore() {
+
+// }
+
+// function getScore() {
+
+// }
+
+
 startBtnEl.addEventListener('click', function (event) {
     timerEl.textContent = timeLeft;
     event.preventDefault();
@@ -91,10 +101,12 @@ questionsEl.addEventListener('click', function(event) {
     if (event.target.matches('.choice')) {
 
         if(event.target.textContent === currentQuestion.answer) {
+            answerEl.textContent = 'Correct!';
             currentQuestion = currentQuestion +1;
-            timeLeft = timeLeft + 20;
-            
+            timeLeft = timeLeft + 5;
+    
         } else {
+            answerEl.textContent = 'Incorrect!'
             timeLeft = timeLeft - 5;
         }
         indexOfCurrentQuestion++;
