@@ -43,6 +43,20 @@ var questions = [
 var timeLeft = 75;
 var indexOfCurrentQuestion = 0;
 
+function renderNextQuestion() {
+    questionsEl.innerHTML = '';
+    var currentQuestion = questions[indexOfCurrentQuestion];
+
+    questionsEl.textContent = currentQuestion.title;
+
+    for (var i = 0; i < currentQuestion.choices.length; i++) {
+        var buttonEl = document.createElement('button');
+        buttonEl.setAttribute('class', 'choice');
+        buttonEl.textContent = currentQuestion.choices[i];
+        questionsEl.appendChild(buttonEl);
+    }
+}
+
 startBtnEl.addEventListener('click', function (event) {
     timerEl.textContent = timeLeft;
 
@@ -56,6 +70,8 @@ startBtnEl.addEventListener('click', function (event) {
             // TODO build the rest of game over logic
             clearInterval(timer);
         }
-
     }, 1000);
+
+    renderNextQuestion();
+
 });
