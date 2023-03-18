@@ -59,46 +59,30 @@ function renderNextQuestion() {
     }
 }
 
-function incorrect () {
-    timeLeft -= 15;
-}
-
-function correct () {
-    score += 20;
-}
-
-
 startBtnEl.addEventListener('click', function (event) {
     timerEl.textContent = timeLeft;
-
     event.preventDefault();
-
     timer = setInterval(function () {
         timeLeft--;
         timerEl.textContent = timeLeft;
-
         if (timeLeft === 0) {
             // TODO build the rest of game over logic
             clearInterval(timer);
         }
     }, 1000);
-
     renderNextQuestion();
-
 });
 
 
 questionsEl.addEventListener('click', function(event) {
     var currentQuestion = questions[indexOfCurrentQuestion];
     event.preventDefault();
-
     if (event.target.matches('.choice')) {
         if(event.target.textContent === currentQuestion.answer) {
             score = score + 20;
         } else {
             timeLeft = timeLeft - 15;
         }
-
         indexOfCurrentQuestion++;
         renderNextQuestion();
     }
