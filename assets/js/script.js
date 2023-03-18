@@ -2,6 +2,8 @@ var timerEl = document.querySelector('#timer');
 var questionsEl = document.querySelector('#questions-container');
 var startBtnEl = document.querySelector('#start-quiz')
 var timer;
+var score = 0;
+
 
 // list of all questions, choices, and answers
 
@@ -57,6 +59,15 @@ function renderNextQuestion() {
     }
 }
 
+function incorrect () {
+    timeLeft -= 15;
+}
+
+function correct () {
+    score += 20;
+}
+
+
 startBtnEl.addEventListener('click', function (event) {
     timerEl.textContent = timeLeft;
 
@@ -76,9 +87,20 @@ startBtnEl.addEventListener('click', function (event) {
 
 });
 
+
 questionsEl.addEventListener('click', function(event) {
+    var currentQuestion = questions[indexOfCurrentQuestion];
     event.preventDefault();
 
-    
+    if (event.target.matches('.choice')) {
+        if(event.target.textContent === currentQuestion.answer) {
+            score = score + 20;
+        } else {
+            timeLeft = timeLeft - 15;
+        }
 
+        indexOfCurrentQuestion++;
+        renderNextQuestion();
+    }
 });
+
