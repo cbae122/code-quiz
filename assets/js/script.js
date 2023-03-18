@@ -74,8 +74,9 @@ startBtnEl.addEventListener('click', function (event) {
             // TODO build the rest of game over logic
             clearInterval(timer);
             endGame ();
-        } else if (indexOfCurrentQuestion === 4) {
+        } else if (indexOfCurrentQuestion > 4) {
             clearInterval(timer);
+            indexOfCurrentQuestion = 0;
             endGame();
         }
             
@@ -88,8 +89,11 @@ questionsEl.addEventListener('click', function(event) {
     var currentQuestion = questions[indexOfCurrentQuestion];
     event.preventDefault();
     if (event.target.matches('.choice')) {
+
         if(event.target.textContent === currentQuestion.answer) {
-            score = score + 20;
+            currentQuestion = currentQuestion +1;
+            timeLeft = timeLeft + 20;
+            
         } else {
             timeLeft = timeLeft - 5;
         }
