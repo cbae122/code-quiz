@@ -75,3 +75,10 @@ startBtnEl.addEventListener('click', function (event) {
     renderNextQuestion();
 
 });
+
+questionsEl.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    
+
+});
