@@ -1,9 +1,12 @@
 var timerEl = document.querySelector('#timer');
 var questionsEl = document.querySelector('#questions-container');
 var answerEl = document.querySelector('#answer-container');
+var endGameEl = document.querySelector('#end-game');
+var endGameFormEl = document.querySelector('#end-game-form');
 var startBtnEl = document.querySelector('#start-quiz');
 var timer;
 var score = 0;
+var scoreShow = 0;
 
 
 // list of all questions, choices, and answers
@@ -61,9 +64,31 @@ function renderNextQuestion() {
     }
 }
 
+function showSubmit() {
+    if (scoreShow == 1) {
+        endGameEl.style.display = 'none';
+        display = 0;
+    } else {
+        endGameEl.style.display = 'block';
+        display = 1;
+    }
+};
+
 function endGame () {
     questionsEl.textContent = 'Your score is: ' + timeLeft;
-}
+    localStorage.setItem("quizResults", JSON.stringify([]));
+    showSubmit()
+    // var submitHighScore = function(event) {
+    //     event.preventDefault()
+    //     var initial = document.querySelector('#initial').value;
+    //     if (!initial) {
+    //     alert('Enter your initials!');
+    //     return;
+    //     };
+    // };
+};
+
+var results = [initials, timeLeft]
 
 // function setScore() {
 
@@ -114,3 +139,4 @@ questionsEl.addEventListener('click', function(event) {
     }
 });
 
+endGameFormEl.addEventListener('submit', submitHighScore)

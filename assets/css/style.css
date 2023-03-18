@@ -44,6 +44,7 @@ button {
     text-align: left;
     color: #ffff;
     background: purple;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 } 
 
 #answer-container {
@@ -52,4 +53,11 @@ button {
     align-items: center;
     text-align: center;
     color: grey;
+}
+
+#end-game {
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
 }
