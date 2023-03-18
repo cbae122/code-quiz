@@ -42,6 +42,7 @@ var questions = [
     },
   ];
 
+
 var timeLeft = 75;
 var indexOfCurrentQuestion = 0;
 
@@ -59,6 +60,10 @@ function renderNextQuestion() {
     }
 }
 
+function endGame () {
+    questionsEl.textContent = 'Your score is: ' + timeLeft;
+}
+
 startBtnEl.addEventListener('click', function (event) {
     timerEl.textContent = timeLeft;
     event.preventDefault();
@@ -68,7 +73,12 @@ startBtnEl.addEventListener('click', function (event) {
         if (timeLeft === 0) {
             // TODO build the rest of game over logic
             clearInterval(timer);
+            endGame ();
+        } else if (indexOfCurrentQuestion === 4) {
+            clearInterval(timer);
+            endGame();
         }
+            
     }, 1000);
     renderNextQuestion();
 });
@@ -81,7 +91,7 @@ questionsEl.addEventListener('click', function(event) {
         if(event.target.textContent === currentQuestion.answer) {
             score = score + 20;
         } else {
-            timeLeft = timeLeft - 15;
+            timeLeft = timeLeft - 5;
         }
         indexOfCurrentQuestion++;
         renderNextQuestion();
