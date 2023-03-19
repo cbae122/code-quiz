@@ -9,6 +9,7 @@ var viewHighScoreEl = document.querySelector('#view-high-score');
 var timer;
 var score = 0;
 var scoreShow = 0;
+var highScores = 0;
 
 
 // list of all questions, choices, and answers
@@ -95,14 +96,19 @@ var submitHighScore = function(event) {
     // };
     results = [initials, timeLeft]
     localStorage.setItem('quizResults', JSON.stringify(results));
-
 };
 
-// var results = [initials, timeLeft]
+function showHighScore () {
+    if (highScores == 1) {
+        highScoreEl.style.display = 'none';
+        display = 0;
+    } else {
+        highScoreEl.style.display = 'block';
+        display = 1;
+    }
 
-// function showHighScore () {
-//     var highScores = localStorage.getItem('quizResults', )
-// }
+    localStorage.getItem('quizResults', JSON.stringify(results));
+}
 
 
 
@@ -146,6 +152,8 @@ questionsEl.addEventListener('click', function(event) {
     }
 });
 
-endGameFormEl.addEventListener('submit', submitHighScore)
-    var highScores = localStorage.getItem('quizResults', results);
-    console.log(results);
+endGameFormEl.addEventListener('submit', submitHighScore) {
+    showHighScore();
+}
+    // var highScores = localStorage.getItem('quizResults', results);
+    
