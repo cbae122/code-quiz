@@ -6,6 +6,9 @@ var endGameFormEl = document.querySelector('#end-game-form');
 var highScoreEl = document.querySelector('#high-score');
 var startBtnEl = document.querySelector('#start-quiz');
 var viewHighScoreEl = document.querySelector('#view-high-score');
+var recordsEl = document.querySelector('#record-scores')
+var backBtnEl = document.querySelector('#back-btn');
+var clearBtn = document.querySelector('#clear-btn');
 var timer;
 var score = 0;
 var scoreShow = 0;
@@ -65,7 +68,7 @@ function renderNextQuestion() {
         buttonEl.textContent = currentQuestion.choices[i];
         questionsEl.appendChild(buttonEl);
     }
-}
+};
 
 function showSubmit() {
     if (scoreShow == 1) {
@@ -80,7 +83,6 @@ function showSubmit() {
 function endGame () {
     questionsEl.textContent = 'Your score is: ' + timeLeft;
     showSubmit()
-    // localStorage.setItem('quizResults', JSON.stringify(results));
 };
 
 var initials;
@@ -90,15 +92,13 @@ var submitHighScore = function(event) {
     event.preventDefault()
     initials = document.querySelector('#initials').value;
     console.log(initials, 'initials')
-    // if (!initial) {
-    //     alert('Enter your initials!');
-    //     return;
-    // };
     results = [initials, timeLeft]
     localStorage.setItem('quizResults', JSON.stringify(results));
 };
 
 function showHighScore () {
+    questionsEl.innerHTML = '';
+    endGameEl.innerHTML ='';
     if (highScores == 1) {
         highScoreEl.style.display = 'none';
         display = 0;
@@ -106,11 +106,23 @@ function showHighScore () {
         highScoreEl.style.display = 'block';
         display = 1;
     }
+    getHighScore();
+    renderHighScore();
+};
 
+var getHighScore = function(event) {
+    event.preventDefault()
+    results = [initials, timeLeft]
     localStorage.getItem('quizResults', JSON.stringify(results));
-}
+};
 
-
+function renderHighScore () {
+    recordsEl.innerHTML = '';
+    var li = document.createElement('li');
+    li.textContent = results
+    li.setAttribute('data-index', i);
+    recordsEl.appendChild(li);
+};
 
 startBtnEl.addEventListener('click', function (event) {
     timerEl.textContent = timeLeft;
@@ -119,7 +131,6 @@ startBtnEl.addEventListener('click', function (event) {
         timeLeft--;
         timerEl.textContent = timeLeft;
         if (timeLeft === 0) {
-            // TODO build the rest of game over logic
             clearInterval(timer);
             endGame ();
         } else if (indexOfCurrentQuestion > 4) {
@@ -152,8 +163,8 @@ questionsEl.addEventListener('click', function(event) {
     }
 });
 
-endGameFormEl.addEventListener('submit', submitHighScore) {
+endGameFormEl.addEventListener('submit', function(event) {
+    event.preventDefault();
     showHighScore();
-}
-    // var highScores = localStorage.getItem('quizResults', results);
+});
     

@@ -61,3 +61,10 @@ button {
     align-items: center;
     text-align: center;
 }
+
+#high-score {
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+}
