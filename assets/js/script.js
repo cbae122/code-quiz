@@ -79,19 +79,26 @@ function showSubmit() {
 function endGame () {
     questionsEl.textContent = 'Your score is: ' + timeLeft;
     showSubmit()
-    localStorage.setItem('quizResults', JSON.stringify(results));
+    // localStorage.setItem('quizResults', JSON.stringify(results));
 };
+
+var initials;
+var results;
 
 var submitHighScore = function(event) {
     event.preventDefault()
-    var initial = document.querySelector('#initial').value;
+    initials = document.querySelector('#initials').value;
+    console.log(initials, 'initials')
     // if (!initial) {
-    // alert('Enter your initials!');
-    // return;
+    //     alert('Enter your initials!');
+    //     return;
     // };
+    results = [initials, timeLeft]
+    localStorage.setItem('quizResults', JSON.stringify(results));
+
 };
 
-var results = [initials, timeLeft]
+// var results = [initials, timeLeft]
 
 // function showHighScore () {
 //     var highScores = localStorage.getItem('quizResults', )
