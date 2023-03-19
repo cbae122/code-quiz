@@ -77,16 +77,16 @@ function showSubmit() {
 function endGame () {
     questionsEl.textContent = 'Your score is: ' + timeLeft;
     showSubmit()
-    localStorage.setItem('quizResults', JSON.stringify([]));
+    localStorage.setItem('quizResults', JSON.stringify(results));
 };
 
 var submitHighScore = function(event) {
     event.preventDefault()
     var initial = document.querySelector('#initial').value;
-    if (!initial) {
-    alert('Enter your initials!');
-    return;
-    };
+    // if (!initial) {
+    // alert('Enter your initials!');
+    // return;
+    // };
 };
 
 var results = [initials, timeLeft]
@@ -138,4 +138,5 @@ questionsEl.addEventListener('click', function(event) {
 });
 
 endGameFormEl.addEventListener('submit', submitHighScore)
-var highScores = localStorage.getItem('quizResults', )
+    var highScores = localStorage.getItem('quizResults', results);
+    console.log(results);
