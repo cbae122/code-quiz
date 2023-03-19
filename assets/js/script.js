@@ -60,14 +60,19 @@ function renderNextQuestion() {
     questionsEl.innerHTML = '';
     var currentQuestion = questions[indexOfCurrentQuestion];
 
-    questionsEl.textContent = currentQuestion.title;
+    if (currentQuestion) {
+        console.log(typeof questionsEl.textContent);
+        console.log(currentQuestion);
 
-    for (var i = 0; i < currentQuestion.choices.length; i++) {
-        var buttonEl = document.createElement('button');
-        buttonEl.setAttribute('class', 'choice');
-        buttonEl.textContent = currentQuestion.choices[i];
-        questionsEl.appendChild(buttonEl);
-    }
+        questionsEl.textContent = currentQuestion.title;
+
+        for (var i = 0; i < currentQuestion.choices.length; i++) {
+            var buttonEl = document.createElement('button');
+            buttonEl.setAttribute('class', 'choice');
+            buttonEl.textContent = currentQuestion.choices[i];
+            questionsEl.appendChild(buttonEl);
+        }
+    }    
 };
 
 function showSubmit() {
@@ -92,7 +97,7 @@ var submitHighScore = function(event) {
     event.preventDefault()
     initials = document.querySelector('#initials').value;
     console.log(initials, 'initials')
-    results = [initials, timeLeft]
+    results = [initials, timeLeft];
     localStorage.setItem('quizResults', JSON.stringify(results));
 };
 
@@ -106,15 +111,14 @@ function showHighScore () {
         highScoreEl.style.display = 'block';
         display = 1;
     }
-    getHighScore();
-    renderHighScore();
 };
 
-var getHighScore = function(event) {
-    event.preventDefault()
-    results = [initials, timeLeft]
-    localStorage.getItem('quizResults', JSON.stringify(results));
-};
+// var getHighScore = function(event) {
+//     console.log(event)
+//     event.preventDefault()
+//     results = [initials, timeLeft]
+//     localStorage.getItem('quizResults', JSON.stringify(results));
+// };
 
 function renderHighScore () {
     recordsEl.innerHTML = '';
@@ -163,8 +167,4 @@ questionsEl.addEventListener('click', function(event) {
     }
 });
 
-endGameFormEl.addEventListener('submit', function(event) {
-    event.preventDefault();
-    showHighScore();
-});
-    
+endGameFormEl.addEventListener('submit', submitHighScore);
