@@ -55,8 +55,7 @@ var questions = [
   ];
 
 var startPage = function () {
-    questionsEl.textContent
-    console.log()
+    showHighScore();
 }
 
 
@@ -130,8 +129,7 @@ var getHighScore = function () {
 function renderHighScore () {
     recordsEl.innerHTML = '';
     var li = document.createElement('li');
-    li.textContent = results
-    // li.setAttribute('data-index', i);
+    li.textContent = results;
     recordsEl.appendChild(li);
 };
 
@@ -174,10 +172,13 @@ questionsEl.addEventListener('click', function(event) {
     }
 });
 
-var clearScores = function () {
-    results = [];
-    localStorage.clear(results);
-    console.log()
+// var clearScores = function () {
+//     localStorage.clear();
+//     renderHighScore();
+// };
+
+function clearScores () {
+    localStorage.removeItem('quizResults');
 };
 
 endGameFormEl.addEventListener('submit', submitHighScore);
@@ -188,6 +189,9 @@ highScoreEl.addEventListener('click', showHighScore);
 
 highScoreViewEl.addEventListener('click', showHighScore);
 
-backBtnEl.addEventListener('click', startPage);
+backBtnEl.addEventListener('click', function(event) {
+    event.preventDefault();
+    location.reload();
+});
 
 clearBtnEl.addEventListener('click', clearScores);
