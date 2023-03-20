@@ -148,11 +148,11 @@ function showHighScore () {
 // };
 
 function newHighScore () {
-    results = [initialsEl, timeLeft];
+    results = JSON.parse(localStorage.getItem('quizResults'));
     console.log(localStorage.getItem('quizResults'));
     recordsEl.innerHTML = '';
     var li = document.createElement('li');
-    li.textContent = results;
+    li.textContent = results [0] + ': ' + results[1];
     recordsEl.appendChild(li);
 };
 
