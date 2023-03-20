@@ -11,7 +11,7 @@ var viewHighScoreEl = document.querySelector('#view-high-score');
 var recordsEl = document.querySelector('#record-scores');
 var backBtnEl = document.querySelector('#back-btn');
 var clearBtnEl = document.querySelector('#clear-btn');
-var initialsEl = document.querySelector('#initials')
+var initialsEl = document.querySelector('#user-initials')
 var timer;
 var score = 0;
 var scoreShow = 0;
@@ -118,6 +118,7 @@ var submitHighScore = function(event) {
     newHighScore();
 };
 
+
 function showHighScore () {
     questionsEl.innerHTML = '';
     endGameEl.innerHTML ='';
@@ -147,7 +148,7 @@ function showHighScore () {
 // };
 
 function newHighScore () {
-    results = [initials, timeLeft];
+    results = [initialsEl, timeLeft];
     console.log(localStorage.getItem('quizResults'));
     recordsEl.innerHTML = '';
     var li = document.createElement('li');
