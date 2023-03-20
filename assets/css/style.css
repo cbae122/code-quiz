@@ -13,11 +13,19 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    margin: 3%
+    margin: auto;
+    padding: 20px;
+    width: 85%;
+}
+
+#high-score-view:hover {
+    cursor: pointer;
+    color: purple;
 }
 
 header h3 {
     display: inline;
+    padding-left: 20px;
 }
 
 .timer {

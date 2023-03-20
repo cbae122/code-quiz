@@ -5,6 +5,7 @@ var endGameEl = document.querySelector('#end-game');
 var endGameFormEl = document.querySelector('#end-game-form');
 var highScoreEl = document.querySelector('#high-score');
 var startBtnEl = document.querySelector('#start-quiz');
+var highScoreViewEl = document.querySelector('#high-score-view')
 var viewHighScoreEl = document.querySelector('#view-high-score');
 var recordsEl = document.querySelector('#record-scores')
 var backBtnEl = document.querySelector('#back-btn');
@@ -114,18 +115,17 @@ function showHighScore () {
     getHighScore();
 };
 
-var getHighScore = function(event) {
-    console.log(event)
-    event.preventDefault()
+var getHighScore = function () {
     results = [initials, timeLeft]
-    localStorage.getItem('quizResults', JSON.stringify(results));
+    console.log(localStorage.getItem('quizResults'));
+    renderHighScore();
 };
 
 function renderHighScore () {
     recordsEl.innerHTML = '';
     var li = document.createElement('li');
     li.textContent = results
-    li.setAttribute('data-index', i);
+    // li.setAttribute('data-index', i);
     recordsEl.appendChild(li);
 };
 
@@ -168,4 +168,10 @@ questionsEl.addEventListener('click', function(event) {
     }
 });
 
+
+
 endGameFormEl.addEventListener('submit', submitHighScore);
+
+highScoreEl.addEventListener('submit', showHighScore);
+
+highScoreViewEl.addEventListener('click', showHighScore);
