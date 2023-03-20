@@ -55,6 +55,12 @@ button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 } 
 
+button:hover {
+    cursor: pointer;
+    color: grey;
+    background-color: transparent;
+}
+
 #answer-container {
     flex-direction: column;
     padding: 20px;
