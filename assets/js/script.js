@@ -11,6 +11,7 @@ var viewHighScoreEl = document.querySelector('#view-high-score');
 var recordsEl = document.querySelector('#record-scores');
 var backBtnEl = document.querySelector('#back-btn');
 var clearBtnEl = document.querySelector('#clear-btn');
+var initialsEl = document.querySelector('#initials')
 var timer;
 var score = 0;
 var scoreShow = 0;
@@ -120,12 +121,14 @@ function showHighScore () {
     getHighScore();
 };
 
+//getting score
 var getHighScore = function () {
     results = [initials, timeLeft]
     console.log(localStorage.getItem('quizResults'));
     renderHighScore();
 };
 
+// renderingScore
 function renderHighScore () {
     recordsEl.innerHTML = '';
     var li = document.createElement('li');
@@ -152,7 +155,6 @@ startBtnEl.addEventListener('click', function (event) {
     renderNextQuestion();
 });
 
-
 questionsEl.addEventListener('click', function(event) {
     var currentQuestion = questions[indexOfCurrentQuestion];
     event.preventDefault();
@@ -171,11 +173,6 @@ questionsEl.addEventListener('click', function(event) {
         renderNextQuestion();
     }
 });
-
-// var clearScores = function () {
-//     localStorage.clear();
-//     renderHighScore();
-// };
 
 function clearScores () {
     localStorage.removeItem('quizResults');
