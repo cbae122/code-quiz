@@ -9,7 +9,7 @@ var highScoreViewEl = document.querySelector('#high-score-view')
 var viewHighScoreEl = document.querySelector('#view-high-score');
 var recordsEl = document.querySelector('#record-scores')
 var backBtnEl = document.querySelector('#back-btn');
-var clearBtn = document.querySelector('#clear-btn');
+var clearBtnEl = document.querySelector('#clear-btn');
 var timer;
 var score = 0;
 var scoreShow = 0;
@@ -52,6 +52,10 @@ var questions = [
       answer: 'console.log',
     },
   ];
+
+var startPage = function () {
+    questionsEl.textContent
+}
 
 
 var timeLeft = 75;
@@ -168,10 +172,17 @@ questionsEl.addEventListener('click', function(event) {
     }
 });
 
-
+var clearScores = function () {
+    results = [];
+    localStorage.clear(results);
+};
 
 endGameFormEl.addEventListener('submit', submitHighScore);
 
 highScoreEl.addEventListener('submit', showHighScore);
 
 highScoreViewEl.addEventListener('click', showHighScore);
+
+backBtnEl.addEventListener('click', startPage);
+
+clearBtnEl.addEventListener('click', clearScores);
