@@ -111,14 +111,15 @@ function showHighScore () {
         highScoreEl.style.display = 'block';
         display = 1;
     }
+    getHighScore();
 };
 
-// var getHighScore = function(event) {
-//     console.log(event)
-//     event.preventDefault()
-//     results = [initials, timeLeft]
-//     localStorage.getItem('quizResults', JSON.stringify(results));
-// };
+var getHighScore = function(event) {
+    console.log(event)
+    event.preventDefault()
+    results = [initials, timeLeft]
+    localStorage.getItem('quizResults', JSON.stringify(results));
+};
 
 function renderHighScore () {
     recordsEl.innerHTML = '';
