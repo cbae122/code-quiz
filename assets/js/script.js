@@ -5,9 +5,10 @@ var endGameEl = document.querySelector('#end-game');
 var endGameFormEl = document.querySelector('#end-game-form');
 var highScoreEl = document.querySelector('#high-score');
 var startBtnEl = document.querySelector('#start-quiz');
-var highScoreViewEl = document.querySelector('#high-score-view')
+var submitScoreBtnEl = document.querySelector('#submit-score');
+var highScoreViewEl = document.querySelector('#high-score-view');
 var viewHighScoreEl = document.querySelector('#view-high-score');
-var recordsEl = document.querySelector('#record-scores')
+var recordsEl = document.querySelector('#record-scores');
 var backBtnEl = document.querySelector('#back-btn');
 var clearBtnEl = document.querySelector('#clear-btn');
 var timer;
@@ -55,6 +56,7 @@ var questions = [
 
 var startPage = function () {
     questionsEl.textContent
+    console.log()
 }
 
 
@@ -175,11 +177,14 @@ questionsEl.addEventListener('click', function(event) {
 var clearScores = function () {
     results = [];
     localStorage.clear(results);
+    console.log()
 };
 
 endGameFormEl.addEventListener('submit', submitHighScore);
 
-highScoreEl.addEventListener('submit', showHighScore);
+submitScoreBtnEl.addEventListener('click', startPage);
+
+highScoreEl.addEventListener('click', showHighScore);
 
 highScoreViewEl.addEventListener('click', showHighScore);
 
