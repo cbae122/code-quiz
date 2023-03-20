@@ -97,15 +97,25 @@ function endGame () {
     showSubmit()
 };
 
-var initials;
-var results;
+// var initials;
+// var results;
+
+// var submitHighScore = function(event) {
+//     event.preventDefault()
+//     initials = document.querySelector('#initials').value;
+//     console.log(initials, 'initials')
+//     results = [initials, timeLeft];
+//     localStorage.setItem('quizResults', JSON.stringify(results));
+// };
 
 var submitHighScore = function(event) {
-    event.preventDefault()
-    initials = document.querySelector('#initials').value;
-    console.log(initials, 'initials')
-    results = [initials, timeLeft];
+    event.preventDefault();
+    var initials = initialsEl.value;
+    console.log(initials);
+    var results = [initials, timeLeft];
     localStorage.setItem('quizResults', JSON.stringify(results));
+
+    newHighScore();
 };
 
 function showHighScore () {
@@ -118,18 +128,27 @@ function showHighScore () {
         highScoreEl.style.display = 'block';
         display = 1;
     }
-    getHighScore();
+    newHighScore();
 };
 
-//getting score
-var getHighScore = function () {
-    results = [initials, timeLeft]
+// //getting score
+// var getHighScore = function () {
+//     results = [initials, timeLeft]
+//     console.log(localStorage.getItem('quizResults'));
+//     renderHighScore();
+// };
+
+// // renderingScore
+// function renderHighScore () {
+//     recordsEl.innerHTML = '';
+//     var li = document.createElement('li');
+//     li.textContent = results;
+//     recordsEl.appendChild(li);
+// };
+
+function newHighScore () {
+    results = [initials, timeLeft];
     console.log(localStorage.getItem('quizResults'));
-    renderHighScore();
-};
-
-// renderingScore
-function renderHighScore () {
     recordsEl.innerHTML = '';
     var li = document.createElement('li');
     li.textContent = results;
@@ -178,7 +197,7 @@ function clearScores () {
     localStorage.removeItem('quizResults');
 };
 
-endGameFormEl.addEventListener('submit', submitHighScore);
+endGameFormEl.addEventListener('click', submitHighScore);
 
 submitScoreBtnEl.addEventListener('click', startPage);
 
