@@ -16,7 +16,7 @@ var timer;
 var score = 0;
 var scoreShow = 0;
 var highScores = 0;
-
+var quizResults = JSON.parse(localStorage.getItem('quizResults')) || [];
 
 // list of all questions, choices, and answers
 
@@ -112,8 +112,9 @@ var submitHighScore = function(event) {
     event.preventDefault();
     var initials = initialsEl.value;
     console.log(initials);
-    var results = [initials, timeLeft];
-    localStorage.setItem('quizResults', JSON.stringify(results));
+    var results = initials+": "+timeLeft;
+    quizResults.push(results)
+    localStorage.setItem('quizResults', JSON.stringify(quizResults));
 
     newHighScore();
 };
@@ -152,8 +153,12 @@ function newHighScore () {
     console.log(localStorage.getItem('quizResults'));
     recordsEl.innerHTML = '';
     var li = document.createElement('li');
-    li.textContent = results [0] + ': ' + results[1];
-    recordsEl.appendChild(li);
+    for (let i = 0; i < results.length; i++) {
+        li.textContent=results[i]
+        document.querySelector("#scores").appendChild(li)
+    }
+    // li.textContent = results [0] + ': ' + results[1];
+    // recordsEl.appendChild(li);
 };
 
 startBtnEl.addEventListener('click', function (event) {
@@ -198,7 +203,7 @@ function clearScores () {
     localStorage.removeItem('quizResults');
 };
 
-endGameFormEl.addEventListener('click', submitHighScore);
+submitScoreBtnEl.addEventListener('click', submitHighScore);
 
 submitScoreBtnEl.addEventListener('click', startPage);
 
