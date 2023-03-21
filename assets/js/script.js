@@ -203,7 +203,7 @@ function clearScores () {
     localStorage.removeItem('quizResults');
 };
 
-submitScoreBtnEl.addEventListener('click', submitHighScore);
+submitScoreBtnEl.addEventListener('submit', submitHighScore);
 
 submitScoreBtnEl.addEventListener('click', startPage);
 
