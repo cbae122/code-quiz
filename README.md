@@ -17,7 +17,7 @@
 ![Code Quiz.](./assets/images/Image%203-20-23%20at%205.45%20PM.jpg)
 
 ## Website Link
-- 
+- https://cbae122.github.io/code-quiz/
 
 ## Credits
 - Instructor Diarmuid Murphy - during office hours, reviewed broken codes and provided solutions 
