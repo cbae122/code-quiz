@@ -14,7 +14,7 @@
 - Once quiz is complete. User can submit score with their intitials!
 - See screenshot below as example
 
-![Code Quiz.](./assets/images/Image%203-11-23%20at%208.52%20PM.jpg)
+![Code Quiz.](./assets/images/Image%203-20-23%20at%205.45%20PM.jpg)
 
 ## Website Link
 - 
